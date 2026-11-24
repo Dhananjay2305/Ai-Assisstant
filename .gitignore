@@ -1,0 +1,40 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Production build outputs
+dist/
+dist-ssr/
+build/
+*.local
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor directories
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Android build outputs & caches
+android/.gradle/
+android/build/
+android/app/build/
+android/.cxx/
+android/local.properties
+*.apk
+*.aab
+
+# OS files
+.DS_Store
+Thumbs.db

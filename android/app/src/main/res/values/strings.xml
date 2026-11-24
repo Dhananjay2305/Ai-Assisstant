@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SARA AI</string>
+    <string name="assistant_service_label">SARA AI Voice Assistant</string>
+    <string name="notification_channel_name">SARA AI Background Listening</string>
+    <string name="notification_channel_desc">Active microphone standby for \'Hey SARA\' voice trigger</string>
+    <string name="notification_title">SARA AI Active</string>
+    <string name="notification_text">Listening for \"Hey SARA\" in background</string>
+    <string name="action_pause">Pause</string>
+    <string name="action_stop">Stop</string>
+    <string name="action_open">Open SARA</string>
+</resources>

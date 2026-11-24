@@ -1,0 +1,338 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-color: #f8fafc;
+    --text-color: #0f172a;
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  html.dark {
+    --bg-color: #000000;
+    --text-color: #ededed;
+    --card-bg: #09090b;
+    --card-border: rgba(255, 255, 255, 0.07);
+    --border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.011em;
+  }
+}
+
+/* Subtle Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #27272a;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Minimal Card Styles */
+.equinox-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.equinox-card:hover {
+  border-color: rgba(0, 102, 255, 0.25);
+  background: var(--card-bg);
+}
+html.dark .equinox-card {
+  background: #09090b;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+html.dark .equinox-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: #0d0d10;
+}
+
+.equinox-divider {
+  border-color: var(--card-border);
+}
+
+/* Liquid Blue Wave Keyframe / Gradient Overlay */
+.blue-mesh-glow {
+  background: radial-gradient(circle at 50% 100%, rgba(0, 102, 255, 0.15) 0%, rgba(0, 50, 180, 0.05) 45%, transparent 70%);
+}
+html.dark .blue-mesh-glow {
+  background: radial-gradient(circle at 50% 100%, rgba(0, 102, 255, 0.22) 0%, rgba(0, 50, 180, 0.08) 45%, transparent 70%);
+}
+
+/* ========================================================
+   PHONE MOCKUP PRESERVATION (Keep phone realistic and dark in all themes)
+   ======================================================== */
+.phone-chassis {
+  background: linear-gradient(145deg, #1f2430 0%, #0d0f15 50%, #171b24 100%) !important;
+  border: 4px solid #333b4f !important;
+  box-shadow: 
+    0 25px 70px -10px rgba(0, 0, 0, 0.45),
+    0 10px 30px -5px rgba(0, 102, 255, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+.phone-screen-display {
+  background: linear-gradient(180deg, #05070f 0%, #080d1e 40%, #03050a 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.phone-screen-display .dynamic-island {
+  background-color: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.phone-screen-display h1,
+.phone-screen-display h2,
+.phone-screen-display h3,
+.phone-screen-display h4,
+.phone-screen-display .text-white,
+.phone-screen-display span.text-white,
+.phone-screen-display div.text-white {
+  color: #ffffff !important;
+}
+
+.phone-screen-display .text-neutral-400 {
+  color: #94a3b8 !important;
+}
+
+.phone-screen-display .text-neutral-300 {
+  color: #e2e8f0 !important;
+}
+
+.phone-screen-display .text-neutral-200 {
+  color: #f1f5f9 !important;
+}
+
+.phone-screen-display .bg-white\/\[0\.03\],
+.phone-screen-display .bg-white\/\[0\.05\],
+.phone-screen-display .bg-white\/\[0\.08\],
+.phone-screen-display .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+.keep-white {
+  color: #ffffff !important;
+}
+
+/* ========================================================
+   LIGHT MODE OVERRIDES (Applied when html does NOT have .dark)
+   ======================================================== */
+html:not(.dark) body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* 1. Sections and Footers: transparent so light mesh shows */
+html:not(.dark) section.bg-black,
+html:not(.dark) footer.bg-black {
+  background-color: transparent !important;
+}
+
+/* 2. Overriding raw dark containers in Light Mode (ignoring phone screens & dynamic islands) */
+html:not(.dark) div.bg-black:not(.phone-chassis):not(.phone-screen-display):not(.dynamic-island):not(.camera-lens):not(.phone-screen-inner),
+html:not(.dark) p.bg-black {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* 3. Cards and Surfaces (except inside phone) */
+html:not(.dark) .bg-\[\#09090b\]:not(.phone-chassis):not(.phone-screen-display),
+html:not(.dark) .bg-\[\#0c0c10\]:not(.phone-chassis):not(.phone-screen-display),
+html:not(.dark) .bg-\[\#121217\]:not(.phone-chassis):not(.phone-screen-display),
+html:not(.dark) .bg-\[\#08080a\]:not(.phone-chassis):not(.phone-screen-display) {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02) !important;
+}
+
+html:not(.dark) .bg-\[\#09090b\]:not(.phone-chassis):not(.phone-screen-display):hover,
+html:not(.dark) .bg-\[\#0c0c10\]:not(.phone-chassis):not(.phone-screen-display):hover {
+  border-color: rgba(0, 102, 255, 0.3) !important;
+  box-shadow: 0 10px 25px -3px rgba(0, 102, 255, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Console card in Demo */
+html:not(.dark) .bg-\[\#080d1a\]\/85 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 102, 255, 0.2) !important;
+  box-shadow: 0 15px 35px -5px rgba(0, 102, 255, 0.08) !important;
+}
+
+/* Subtle inner surfaces (replace transparent white with soft slate) */
+html:not(.dark) .bg-white\/\[0\.02\],
+html:not(.dark) .bg-white\/\[0\.03\],
+html:not(.dark) .bg-white\/\[0\.04\],
+html:not(.dark) .bg-white\/\[0\.05\],
+html:not(.dark) .bg-white\/\[0\.06\],
+html:not(.dark) .bg-white\/\[0\.08\] {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+html:not(.dark) .hover\:bg-white\/\[0\.04\]:hover,
+html:not(.dark) .hover\:bg-white\/\[0\.05\]:hover,
+html:not(.dark) .hover\:bg-white\/\[0\.08\]:hover,
+html:not(.dark) .hover\:bg-white\/\[0\.1\]:hover {
+  background-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* 4. Borders */
+html:not(.dark) [class*="border-white/"] {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 5. Typography Contrast in Light Mode */
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6 {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .text-white:not(button):not(button *):not(a.bg-\[\#0066ff\]):not(a.bg-\[\#0066ff\] *):not(.bg-blue-600 *):not(.bg-blue-500 *):not(.bg-\[\#0066ff\] *):not([class*="bg-blue-"] *):not(.phone-screen *):not(.badge-blue *):not(.keep-white) {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .text-neutral-400 {
+  color: #475569 !important;
+}
+html:not(.dark) .text-neutral-300 {
+  color: #1e293b !important;
+}
+html:not(.dark) .text-neutral-200 {
+  color: #0f172a !important;
+}
+html:not(.dark) .text-neutral-500 {
+  color: #64748b !important;
+}
+html:not(.dark) .text-\[\#ededed\] {
+  color: #0f172a !important;
+}
+
+/* Light accents made high contrast for white background */
+html:not(.dark) .text-emerald-300 {
+  color: #047857 !important;
+}
+html:not(.dark) .text-emerald-400 {
+  color: #059669 !important;
+}
+html:not(.dark) .text-cyan-300 {
+  color: #0284c7 !important;
+}
+html:not(.dark) .text-cyan-400 {
+  color: #0284c7 !important;
+}
+html:not(.dark) .text-blue-300 {
+  color: #1d4ed8 !important;
+}
+html:not(.dark) .text-blue-200 {
+  color: #1e40af !important;
+}
+html:not(.dark) .text-amber-300 {
+  color: #b45309 !important;
+}
+html:not(.dark) .text-rose-200 {
+  color: #9f1239 !important;
+}
+
+/* Primary action buttons: Explore SARA AI (dark obsidian button on light mode) */
+html:not(.dark) a.bg-white.text-black {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15) !important;
+}
+html:not(.dark) a.bg-white.text-black:hover {
+  background-color: #1e293b !important;
+}
+
+/* Keep blue button text white */
+html:not(.dark) .bg-\[\#0066ff\],
+html:not(.dark) .bg-blue-600,
+html:not(.dark) .bg-blue-500 {
+  color: #ffffff !important;
+}
+html:not(.dark) .bg-\[\#0066ff\] span,
+html:not(.dark) .bg-blue-600 span,
+html:not(.dark) .bg-blue-500 span {
+  color: #ffffff !important;
+}
+
+/* Quick command buttons */
+html:not(.dark) .no-scrollbar button {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+}
+html:not(.dark) .no-scrollbar button:hover {
+  background-color: #e2e8f0 !important;
+  color: #0066ff !important;
+  border-color: #94a3b8 !important;
+}
+
+/* Navbar in Light Mode */
+html:not(.dark) header {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+html:not(.dark) header nav a,
+html:not(.dark) header nav button {
+  color: #334155 !important;
+}
+html:not(.dark) header nav a:hover,
+html:not(.dark) header nav button:hover {
+  color: #0066ff !important;
+}
+html:not(.dark) header .text-white:not(.keep-white) {
+  color: #0f172a !important;
+}
+
+/* Dropdown menu in Navbar */
+html:not(.dark) header div.rounded-2xl.bg-\[\#09090b\] {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12) !important;
+}
+html:not(.dark) header div.rounded-2xl.bg-\[\#09090b\] a {
+  color: #334155 !important;
+}
+html:not(.dark) header div.rounded-2xl.bg-\[\#09090b\] a:hover {
+  background-color: rgba(0, 102, 255, 0.08) !important;
+  color: #0066ff !important;
+}
+
+/* Inputs and textareas */
+html:not(.dark) input,
+html:not(.dark) textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #94a3b8 !important;
+}
